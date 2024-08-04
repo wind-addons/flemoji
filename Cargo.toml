@@ -1,0 +1,14 @@
+[package]
+name = "flemoji"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "flemoji"
+path = "src/bin/flemoji.rs"
+
+[dependencies]
+image = "0.25.2"
+walkdir = "2.5.0"
+rayon = "1.10.0"
+clap = { version = "4.5.13", features = ["derive"] }

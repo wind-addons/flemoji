@@ -1,0 +1,25 @@
+name: 🦀 Rust
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  check:
+    name: 🧐 Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup toolchain
+        run: rustup component add clippy rustfmt
+      - name: Build
+        run: cargo build --verbose
+      - name: Test
+        run: cargo test --verbose
+      - name: Lint
+        run: cargo clippy --verbose
+      - name: Format check
+        run: cargo fmt -- --check
